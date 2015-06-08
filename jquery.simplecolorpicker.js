@@ -59,7 +59,9 @@
       // <span class="color selected" title="Green" style="background-color: #7bd148;" role="button"></span>
       self.$select.find('> option').each(function() {
         var $option = $(this);
-        var color = $option.val();
+
+	    //adding a '#' because server transactions are without it
+        var color = "#" + $option.val();
 
         var isSelected = $option.is(':selected');
         var isDisabled = $option.is(':disabled');
@@ -158,8 +160,8 @@
         this.hidePicker();
       }
 
-      // Change HTML select value
-      this.$select.val(color);
+      // Change HTML select value need to remove '#' from selevted value
+      this.$select.val(color.replace("#", ""));
     },
 
     /**
